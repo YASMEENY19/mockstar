@@ -5,7 +5,7 @@ It is built using **HTML, CSS, and JavaScript**.
 
 ## Pages
 - `index.html` → Homepage
-- `mjio.html` → Jio Studio
+- `mjio.html` → MJio Studio
 - `myspace.html` → My Space (login demo)
 
 ## Disclaimer
