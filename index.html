@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" 
+      content="default-src 'self' https:; img-src 'self' https: data:; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;">
+
+   
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intro Video -  MockStar App</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background: black;
+    }
+    video {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <!-- DEMO banner (top) -->
+<div style="position:fixed;left:10px;top:10px;z-index:9999;
+            background:#ffeb3b;color:#000;padding:6px 10px;border-radius:6px;
+            font-weight:700;font-family:Arial;">
+  DEMO — For educational use only
+</div>
+  <video autoplay muted playsinline id="introVideo">
+    <source src="videos/mjho.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    const video = document.getElementById("introVideo");
+    video.onended = function() {
+      // Redirect to home page after video ends
+      window.location.href = "mjio.html"; // change this to your actual home page
+    };
+  </script>
+</body>
+</html>
