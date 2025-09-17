@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
   <meta http-equiv="Content-Security-Policy" 
-      content="default-src 'self' https:; img-src 'self' https: data:; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;">
+  content="default-src 'self' https:; 
+           img-src 'self' https: data:; 
+           script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; 
+           style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;">
 
-   
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Intro Video -  MockStar App</title>
+  <title>Intro Video - MockStar App</title>
   <style>
     body, html {
       margin: 0;
@@ -20,27 +22,44 @@
       height: 100%;
       width: 100%;
       object-fit: cover;
+      display: block;
     }
   </style>
 </head>
 <body>
   <!-- DEMO banner (top) -->
-<div style="position:fixed;left:10px;top:10px;z-index:9999;
-            background:#ffeb3b;color:#000;padding:6px 10px;border-radius:6px;
-            font-weight:700;font-family:Arial;">
-  DEMO — For educational use only
-</div>
-  <video autoplay muted playsinline id="introVideo">
+  <div style="position:fixed;left:10px;top:10px;z-index:9999;
+              background:#ffeb3b;color:#000;padding:6px 10px;border-radius:6px;
+              font-weight:700;font-family:Arial;">
+    DEMO — For educational use only
+  </div>
+
+  <!-- Video -->
+  <video id="introVideo" autoplay muted playsinline>
     <source src="videos/mjho.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 
   <script>
     const video = document.getElementById("introVideo");
-    video.onended = function() {
-      // Redirect to home page after video ends
-      window.location.href = "mjio.html"; // change this to your actual home page
-    };
+
+    // Try playing the video
+    video.play().catch(err => {
+      console.log("Autoplay blocked, redirecting anyway:", err);
+      window.location.href = "mjio.html";
+    });
+
+    // Redirect when video ends
+    video.addEventListener("ended", () => {
+      console.log("Video ended → redirecting");
+      window.location.href = "mjio.html";
+    });
+
+    // Hard fallback → redirect after 1 second
+    setTimeout(() => {
+      console.log("1s fallback triggered → redirecting");
+      window.location.href = "mjio.html";
+    }, 2000);
   </script>
 </body>
 </html>
